@@ -64,40 +64,41 @@ class Book extends Component {
           </div>
 
           <div className="book-title"> 
-              <a onClick={this.openModal}>{book.title}</a> 
-            </div>
-           <Modal
-          isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
-          style={customStyles}
-          contentLabel="Example Modal">
+              <a href="#" onClick={this.openModal}>{book.title}</a> 
+          </div>
+          
+          <Modal
+            isOpen={this.state.modalIsOpen}
+            onAfterOpen={this.afterOpenModal}
+            onRequestClose={this.closeModal}
+            style={customStyles}
+            contentLabel="Example Modal"
+          >
 
           <h2 ref={subtitle => this.subtitle = subtitle}>{book.title}</h2>
+          
           <div className="book">
-          <div className="book-top">
-          <div className="back-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
-           <div className="book-shelf-changer">
-            <select id={book.id} value={book.shelf} onChange={changeShelf}>
-              <option value="none" disabled>Move to...</option>
-              <option value="currentlyReading">Currently Reading</option>
-              <option value="wantToRead">Want to Read</option>
-              <option value="read">Read</option>
-              <option value="none">None</option>
-            </select>
+            <div className="book-top">
+              <div className="back-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
+              <div className="book-shelf-changer">
+                <select id={book.id} value={book.shelf} onChange={changeShelf}>
+                  <option value="none" disabled>Move to...</option>
+                  <option value="currentlyReading">Currently Reading</option>
+                  <option value="wantToRead">Want to Read</option>
+                  <option value="read">Read</option>
+                  <option value="none">None</option>
+                </select>
+              </div>
+            </div>
           </div>
-          </div>
-          </div>
+          
           <p>Rating: {book.averageRating}</p>
           <p>Written by: {book.authors}</p>
           <p>Categories: {book.categories}</p>
           <p>{book.description}</p>
-          
-
           <button onClick={this.closeModal}>close</button>
         </Modal>
-        
-          {book.authors &&
+        {book.authors &&
           book.authors.map(author =>
             <div key={author} className="book-authors">
               {author}
