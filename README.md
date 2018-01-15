@@ -3,6 +3,7 @@
 ## Introduction
 
 > In this application, the main page displays a list of "shelves" (i.e. categories), each of which contains a number of books. The three shelves are:
+
 - Currently Reading
 - Want to Read
 - Read
@@ -11,12 +12,10 @@
 
 > Also there's a search feature so, you can look for others books
 
-## Code Samples
-
-
 
 ## Installation
 
 > After you clone this repository run the below commands:
+
 - npm install
 - npm start
