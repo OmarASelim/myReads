@@ -5,7 +5,10 @@ import Book from './Book'
 
 class Search extends Component {
   state = {
-    searchedBooks: []
+    query: []
+  }
+   clearQuery = () => {
+    this.setState({query: ''})
   }
 
   search = (event) => {
@@ -14,15 +17,15 @@ class Search extends Component {
     }
     BooksAPI.search(event.target.value, 25).then((books) => {
       if (books.error === undefined) {
-        this.setState({searchedBooks: books});
+        this.setState({query: books});
       } else {
-        this.setState({searchedBooks: []});
+        this.setState({query: []});
       }
     });
   }
 
   render () {
-    const { searchedBooks } = this.state;
+    const { query } = this.state;
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -33,8 +36,8 @@ class Search extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {searchedBooks.map((book) => (
-              <Book key={book.id} book={book} onChangeShelf={this.props.onShelfSelect} />
+            {query.map((book) => (
+              <Book key={book.id} book={book} changeShelf={this.props.onShelfSelect} />
             ))}
           </ol>
         </div>

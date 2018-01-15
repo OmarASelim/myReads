@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom'
 
 import * as BooksAPI from '../BooksAPI'
-import BookShelf from '../components/Books'
+import BookList from '../components/BookList'
 import Search from '../components/Search'
 import './App.css'
 
@@ -36,9 +36,9 @@ class App extends Component {
             </div>
             <div className="list-books-content">
               <div>
-                <BookShelf title='Currently Reading' books={Books.filter((book) => book.shelf === 'currentlyReading')} onChangeShelf={this.changeShelf} />
-                <BookShelf title='Want to Read' books={Books.filter((book) => book.shelf === 'wantToRead')} onChangeShelf={this.changeShelf} />
-                <BookShelf title='Read' books={Books.filter((book) => book.shelf === 'read')} onChangeShelf={this.changeShelf} />
+                <BookList title='Currently Reading' books={Books.filter((book) => book.shelf === 'currentlyReading')} changeShelf={this.changeShelf} />
+                <BookList title='Want to Read' books={Books.filter((book) => book.shelf === 'wantToRead')} changeShelf={this.changeShelf} />
+                <BookList title='Read' books={Books.filter((book) => book.shelf === 'read')} changeShelf={this.changeShelf} />
               </div>
             </div>
             <div className="open-search">

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+
 import { Route, Link } from 'react-router-dom'
-import BookDetail from './BookDetail'
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -16,6 +15,7 @@ const customStyles = {
     transform             : 'translate(-50%, -50%)'
   }
 };
+
 
 
 class Book extends Component {
@@ -37,34 +37,23 @@ class Book extends Component {
 
   afterOpenModal() {
     // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
+    this.subtitle.style.color = '#2e7c31';
   }
 
   closeModal() {
     this.setState({modalIsOpen: false});
   }
-  static propTypes = {
-
-    id: PropTypes.string,
-    imageLinks: PropTypes.object.isRequired,
-    title: PropTypes.string.isRequired,
-    authors: PropTypes.array,
-    shelf: PropTypes.string.isRequired,
-    onChangeShelf: PropTypes.func.isRequired,
-
-
-  }
+  
 
   render () {
-    console.log(this.props.book);
-    const { book, onChangeShelf } = this.props;
+    const { book, changeShelf } = this.props;
     return (
       <li>
         <div className="book">
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
             <div className="book-shelf-changer">
-              <select id={book.id} value={book.shelf} onChange={onChangeShelf}>
+              <select id={book.id} value={book.shelf} onChange={changeShelf}>
                 <option value="none" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
@@ -89,7 +78,7 @@ class Book extends Component {
           <div className="book-top">
           <div className="back-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
            <div className="book-shelf-changer">
-            <select id={book.id} value={book.shelf} onChange={onChangeShelf}>
+            <select id={book.id} value={book.shelf} onChange={changeShelf}>
               <option value="none" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
