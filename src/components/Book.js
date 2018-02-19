@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-import { Route, Link } from 'react-router-dom'
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -46,13 +45,15 @@ class Book extends Component {
   
 
   render () {
-    const { book, changeShelf } = this.props;
+    const { book, changeShelf, value } = this.props;
     return (
       <li>
         <div className="book">
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
             <div className="book-shelf-changer">
+            
+           
               <select id={book.id} value={book.shelf} onChange={changeShelf}>
                 <option value="none" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
@@ -81,7 +82,7 @@ class Book extends Component {
             <div className="book-top">
               <div className="back-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
               <div className="book-shelf-changer">
-                <select id={book.id} value={book.shelf} onChange={changeShelf}>
+                <select id={book.id} value={value} onChange={changeShelf}>
                   <option value="none" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
                   <option value="wantToRead">Want to Read</option>
